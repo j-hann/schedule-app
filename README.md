@@ -1,6 +1,6 @@
 
 # 💻 프로젝트 소개
-#### 📅 **일정 관리 사이트** 📅
+#### 📅 **일정 관리 앱** 📅
 
 ## 🚀 개발 기간
 > 2024.11.13 - 2024.11.15
@@ -21,3 +21,15 @@
 🐛 fix : 버그 수정<br>
 🚚 rename : 파일, 경로, route를 옮기거나 이름 변경<br>
 ♻️ refactor : 코드 리팩토링<br>
+
+## 📑 API 명세서 & ERD
+### 📄 API 명세서
+<details>
+<summary>API 명세서</summary>
+<br/>
+</details>
+
+### ️⚙️ ERD
+<details>
+<summary>ERD</summary>
+</details>

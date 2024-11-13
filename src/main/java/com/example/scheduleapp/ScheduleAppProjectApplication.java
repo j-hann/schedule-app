@@ -10,4 +10,4 @@ public class ScheduleAppProjectApplication {
         SpringApplication.run(ScheduleAppProjectApplication.class, args);
     }
 
-}
+}//end class
