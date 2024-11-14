@@ -2,11 +2,13 @@ package com.example.scheduleapp.controller;
 
 import com.example.scheduleapp.dto.CreateScheduleRequestDto;
 import com.example.scheduleapp.dto.ScheduleResponseDto;
+import com.example.scheduleapp.dto.ScheduleWithUsernameResponseDto;
 import com.example.scheduleapp.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +42,15 @@ public class ScheduleController {
         List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAllSchedule();
 
         return new ResponseEntity<>(scheduleResponseDtoList, HttpStatus.OK);
-    }//findAll
+    }//findAllSchedule
+
+    //일정 ID로 특정 일정 조회
+    @GetMapping("/{id}")
+    public ResponseEntity<ScheduleWithUsernameResponseDto> findScheduleById(@PathVariable Long id) {
+
+        ScheduleWithUsernameResponseDto scheduleWithUsernameResponseDto = scheduleService.findScheduleById(id);
+
+        return new ResponseEntity<>(scheduleWithUsernameResponseDto, HttpStatus.OK);
+    }//findScheduleById
 
 }//end class

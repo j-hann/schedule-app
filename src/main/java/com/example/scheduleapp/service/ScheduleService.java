@@ -1,6 +1,7 @@
 package com.example.scheduleapp.service;
 
 import com.example.scheduleapp.dto.ScheduleResponseDto;
+import com.example.scheduleapp.dto.ScheduleWithUsernameResponseDto;
 import com.example.scheduleapp.entity.Schedule;
 import com.example.scheduleapp.entity.User;
 import com.example.scheduleapp.repository.ScheduleRepository;
@@ -39,5 +40,11 @@ public class ScheduleService {
                 .toList();
     }//findAllSchedule
 
+    //일정 ID로 특정 일정 조회
+    public ScheduleWithUsernameResponseDto findScheduleById(Long id) {
+        Schedule findSchedule = scheduleRepository.findScheduleByIdOrElseThrow(id);
+        User writer = findSchedule.getUser();
 
+        return new ScheduleWithUsernameResponseDto(findSchedule.getTitle(), findSchedule.getContents(), writer.getUsername());
+    }//findScheduleById
 }//end class
