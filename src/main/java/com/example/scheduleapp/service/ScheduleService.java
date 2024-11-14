@@ -47,4 +47,11 @@ public class ScheduleService {
 
         return new ScheduleWithUsernameResponseDto(findSchedule.getTitle(), findSchedule.getContents(), writer.getUsername());
     }//findScheduleById
+
+    //일정 ID로 특정 일정 삭제
+    public void deleteSchedule(Long id) {
+        Schedule findSchedule = scheduleRepository.findScheduleByIdOrElseThrow(id);
+
+        scheduleRepository.delete(findSchedule);
+    }//deleteSchedule
 }//end class
