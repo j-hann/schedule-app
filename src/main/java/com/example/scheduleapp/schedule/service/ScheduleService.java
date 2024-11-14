@@ -1,11 +1,11 @@
-package com.example.scheduleapp.service;
+package com.example.scheduleapp.schedule.service;
 
-import com.example.scheduleapp.dto.ScheduleResponseDto;
-import com.example.scheduleapp.dto.ScheduleWithUsernameResponseDto;
-import com.example.scheduleapp.entity.Schedule;
-import com.example.scheduleapp.entity.User;
-import com.example.scheduleapp.repository.ScheduleRepository;
-import com.example.scheduleapp.repository.UserRepository;
+import com.example.scheduleapp.schedule.dto.ScheduleResponseDto;
+import com.example.scheduleapp.schedule.dto.ScheduleWithUsernameResponseDto;
+import com.example.scheduleapp.schedule.entity.Schedule;
+import com.example.scheduleapp.user.entity.User;
+import com.example.scheduleapp.schedule.repository.ScheduleRepository;
+import com.example.scheduleapp.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

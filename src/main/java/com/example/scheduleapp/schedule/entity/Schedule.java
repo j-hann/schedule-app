@@ -1,5 +1,7 @@
-package com.example.scheduleapp.entity;
+package com.example.scheduleapp.schedule.entity;
 
+import com.example.scheduleapp.common.entity.BaseEntity;
+import com.example.scheduleapp.user.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import lombok.Getter;
 @Getter
 @Entity
 @Table(name = "schedule")
-public class Schedule extends BaseEntity{
+public class Schedule extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;//일정 id

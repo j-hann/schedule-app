@@ -1,6 +1,6 @@
-package com.example.scheduleapp.repository;
+package com.example.scheduleapp.schedule.repository;
 
-import com.example.scheduleapp.entity.Schedule;
+import com.example.scheduleapp.schedule.entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
