@@ -20,13 +20,13 @@ public class Schedule extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;//일정 id
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     private String title;//일정 제목
 
-    @Column(columnDefinition = "longtext")
+    @Column(length = 200)
     private String contents;//일정 내용
 
-    //N:1
+    //연관관계 - N:1
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

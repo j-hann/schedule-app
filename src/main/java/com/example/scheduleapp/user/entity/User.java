@@ -18,12 +18,13 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //사용자 id
 
-    @Column(nullable = false, unique = true)//unique 설정
+    @Column(length = 10, nullable = false, unique = true)//unique 설정
     private String username;//사용자 이름
 
     @Column(nullable = false)
     private String password;//사용자 비밀번호
 
+    @Column(nullable = false)
     private String email;//사용자 이메일
 
     public User(){

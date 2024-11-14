@@ -10,6 +10,6 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     //조회
     //일정 id가 없을 경우 예외처리
     default Schedule findScheduleByIdOrElseThrow(Long id) {
-        return findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id = " + id));
+        return findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "해당 일정이 존재하지 않습니다." + id));
     }//findScheduleByIdOrElseThrow
 }//end class
