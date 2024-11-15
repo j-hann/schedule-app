@@ -337,6 +337,7 @@
 <summary> 📌 회원가입</summary>
 
 * postman
+
 ![포스트맨 결과 ](https://github.com/user-attachments/assets/ec094383-f43c-448c-bcb1-a33353388fcc)
 
 * 터미널 log
