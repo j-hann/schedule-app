@@ -86,14 +86,110 @@
     "error": "일정 생성에 실패했습니다."
   }
 ```
+</details>
+
+<details>
+<summary>✅ 일정 목록 조회</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+| 일정 목록 조회 | GET  |/schedules|
+
+#### Request Eelements
+- x
+
+#### Respons Eelements
+|    파라미터    |   타입    | 필수 여부 |           설명           |
+|:----------:|:-------:|:-----:|:----------------------:|
+|     id     | Integer |   Y   |         일정 ID          |
+|   title    | String  |   Y   |         일정 제목          |
+|  contents  | String  |   Y   |         일정 내용          |
+
+
+#### 응답 예시
+- Statue Code 200 OK [응답 성공]
+```json
+[
+  {
+    "id": 1,
+    "title": "제목입니다.1",
+    "contents": "내용입니다.3"
+  },
+  {
+    "id": 2,
+    "title": "제목입니다.2",
+    "contents": "내용입니다.2"
+  },
+  {
+    "id": 3,
+    "title": "제목입니다.3",
+    "contents": "내용입니다.3"
+  }
+]
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "일정 조회에 실패했습니다."
+  }
+```
 - Statue Code 401 Unauthorized [권한 없음]
 ```json
   {
-    "error": "일정 생성 권한이 없습니다."
+    "error": "일정 조회 권한이 없습니다."
   }
 ```
 </details>
 
+<details>
+<summary>✅ 일정 상세 조회</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+| 일정 상세 조회 | GET  |/schedules/{id}|
+
+#### Request Eelements
+- x
+
+#### Respons Eelements
+| 파라미터  |   타입    | 필수 여부 |           설명           |
+|:-----:|:-------:|:-----:|:----------------------:|
+| id | Integer |   Y   |         일정 ID          |
+|user_id | String  |   Y   |         사용자 ID         |
+|     name      | String  |   Y   |         사용자 이름         |
+| password | String  |   Y   |        일정 비밀번호         |
+| title | String  |   Y   |         일정 제목          |
+| contents | String  |   Y   |         일정 내용          |
+| created_at | String |   Y   |   일정 작성 일자(datetime)   |
+| updated_at |  String   |   Y   | 일정 최종 수정 일자 (datetime) |
+
+#### 응답 예시
+- Statue Code 200 OK [응답 성공]
+```json
+{
+  "id" :"1",
+  "user_id" : "550e8400-e29b-41d4-a716-441155770000",
+  "name" : "작성자1",
+  "password" : "12345",
+  "title" : "오늘의 일정",
+  "contents" : "과제 제출하기",
+  "created_at" : "2024-10-30",
+  "updated_at" : "2024-10-31"
+}
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "일정 조회에 실패했습니다."
+  }
+```
+- Statue Code 401 Unauthorized [권한 없음]
+```json
+  {
+    "error": "일정 조회 권한이 없습니다."
+  }
+```
+</details>
 
 
 
@@ -156,7 +252,7 @@
 <details>
 <summary> 📌 일정 생성</summary>
 
-* postman 응답
+* postman
 
 ![postman 응답](https://github.com/user-attachments/assets/2909bda1-b372-41c8-875a-f4ab2c614b53)
 * 터미널 log
@@ -170,7 +266,7 @@
 <details>
 <summary> 📌 일정 전체 조회</summary>
 
-* postman 응답
+* postman
 
  ![postman 응답](https://github.com/user-attachments/assets/1d46e8e5-0492-4ce0-985a-620c5634f912)<br>
 * 터미널 log
@@ -185,7 +281,7 @@
 <details>
 <summary> 📌 특정 일정 조회</summary>
 
-* postman 응답
+* postman
 
 ![postman 응답](https://github.com/user-attachments/assets/7c26484a-73d6-4901-ae80-ffbdcabf61c8)<br>
 * 터미널 log
@@ -200,7 +296,7 @@
 <details>
 <summary> 📌 특정 일정 수정</summary>
 
-#### postman 응답
+#### postman
 - 전체 일정 목록 조회
 ![전체 일정 목록](https://github.com/user-attachments/assets/5b43a557-2efa-45b6-9896-20c4e98d1b23)<br>
 - 일정 1번 id 제목, 내용 수정
@@ -220,7 +316,7 @@
 <details>
 <summary> 📌 특정 일정 삭제</summary>
 
-#### postman 응답
+#### postman
 - 삭제 전 일정 조회
 ![삭제 전 일정 조회](https://github.com/user-attachments/assets/4d793b5d-7f73-4f82-afc8-45dc7bc8006f)<br>
 - id 1번 일정 삭제 완료
@@ -240,14 +336,77 @@
 <details>
 <summary> 📌 회원가입</summary>
 
+* postman
+![포스트맨 결과 ](https://github.com/user-attachments/assets/ec094383-f43c-448c-bcb1-a33353388fcc)
+
+* 터미널 log
+![터미널 로그 확인](https://github.com/user-attachments/assets/e910c5a7-1088-4783-9faa-62485c3c1494)
+
+* MySQL 쿼리 조회
+![MySQL 쿼리 조회](https://github.com/user-attachments/assets/a07480c7-e5f0-48f6-81bd-1d730a211d86)
+
 </details>
 
 <details>
 <summary> 📌 로그인</summary>
 
+#### postman
+
+- 회원가입 후 쿠키 생성
+
+![회원가입](https://github.com/user-attachments/assets/445e1b15-ed28-492f-85be-37369e929eec)
+![회원가입하면 바로 쿠키 생성됨](https://github.com/user-attachments/assets/7fc8eb45-d4fa-46f9-acc2-45ef749763fc)
+
+- 로그인 성공 - 200 OK
+
+![로그인 성공](https://github.com/user-attachments/assets/38d7f32c-3de8-472a-a4a2-ea81701b4e0e)
+
+- 로그인 상태에서 일정 생성
+![로그인 상태에서 포스트맨 일정 생성](https://github.com/user-attachments/assets/841294be-306f-4f83-a6d7-bd14458bf385)
+
+- 로그인 상태에서 일정 조회
+![로그인 상태에서 포스트맨 일정 조회](https://github.com/user-attachments/assets/8bc0360d-44df-43ab-ada8-0bd5804b9745)
+
+- 이메일이 다르게 입력 된 경우 - 400 Bad Request
+![이메일이 다를 경우 400](https://github.com/user-attachments/assets/4a66973d-b76a-4cf0-a7b2-d5934608b287)
+
+- 비밀번호가 다르게 입력 된 경우 - 400 Bad Request
+![비밀번호가 다를 경우 400](https://github.com/user-attachments/assets/870a0dec-dbd0-4ed3-81d0-92a050524389)
+
+- 로그인 하지 않은 상태에서 일정 생성
+![로그인하지 않은 상태에서 스케쥴 생성](https://github.com/user-attachments/assets/c2557e0f-5089-43e7-8516-51bb8d5eb89c)
+
+#### 터미널 log
+
+- 로그인 성공 후 터미널 log
+![터미널 로그](https://github.com/user-attachments/assets/afca0838-17ab-44b7-b866-75164ba42b50)
+
+- 로그인 상태에서 일정 생성 터미널 log
+![로그인 상태에서 일정 생성 터미널 로그](https://github.com/user-attachments/assets/278c46d9-a22f-467b-a5a8-6b6f86926b52)
+
+- 로그인 상태에서 일정 조회 터미널 log
+![로그인 상태에서 일정 조회 터미널 로그](https://github.com/user-attachments/assets/d809f35b-1784-41c3-94e4-b61948dd48a4)
+
+- 로그인 상태에서 일정 삭제 터미널 log
+![로그인 상태에서 일정 삭제 터미널 로그](https://github.com/user-attachments/assets/5caa5514-fd41-4acf-87f8-8dbf4b5b9783)
+
+- 로그인 하지 않은 상태에서 일정 생성 터미널 log
+![로그인하지 않은 상태에서 스케쥴 생성 터미널 로그](https://github.com/user-attachments/assets/bcfe7015-5813-430c-a594-c69e193a22e1)
+
 </details>
 
 <details>
-<summary> 📌 사용자 조회</summary>
+<summary> 📌 특정 사용자 조회</summary>
 
+* postman
+
+![postman 조회](https://github.com/user-attachments/assets/b32ebc3c-af12-49ed-afaf-38d3bfd2d321)
+
+* 터미널 log
+
+![터미널 log](https://github.com/user-attachments/assets/6bb246bd-85fd-4be3-a507-05779f925941)
+
+* MySQL 쿼리 조회
+
+![MySQL 쿼리 조회](https://github.com/user-attachments/assets/c6ed6a44-6306-4f0b-a74e-4054b4f44bf9)
 </details>
