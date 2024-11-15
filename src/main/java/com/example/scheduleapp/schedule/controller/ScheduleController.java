@@ -3,14 +3,17 @@ package com.example.scheduleapp.schedule.controller;
 import com.example.scheduleapp.schedule.dto.CreateScheduleRequestDto;
 import com.example.scheduleapp.schedule.dto.ScheduleResponseDto;
 import com.example.scheduleapp.schedule.dto.ScheduleWithUsernameResponseDto;
+import com.example.scheduleapp.schedule.dto.UpdateScheduleRequestDto;
 import com.example.scheduleapp.schedule.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,4 +65,15 @@ public class ScheduleController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }//delete
+
+    //일정 ID로 특정 일정 수정
+    @PutMapping("/{id}")
+    public ResponseEntity<ScheduleResponseDto> updateSchedule(
+            @PathVariable Long id,
+            @RequestBody UpdateScheduleRequestDto requestDto
+    ) {
+        scheduleService.updateSchedule(id, requestDto.getTitle(), requestDto.getContents());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }//updateSchedule
 }//end class

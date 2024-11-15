@@ -45,4 +45,10 @@ public class Schedule extends BaseEntity {
         this.user = user;
     }//setUser
 
+    //일정 수정
+    public void setUpdateSchedule(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }//setter - updateSchedule
+
 }//end class

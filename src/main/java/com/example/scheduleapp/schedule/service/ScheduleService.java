@@ -7,7 +7,10 @@ import com.example.scheduleapp.user.entity.User;
 import com.example.scheduleapp.schedule.repository.ScheduleRepository;
 import com.example.scheduleapp.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -54,4 +57,17 @@ public class ScheduleService {
 
         scheduleRepository.delete(findSchedule);
     }//deleteSchedule
+
+
+    //일정 ID로 특정 일정 수정
+    @Transactional
+    public ScheduleResponseDto updateSchedule(Long id, String title, String contents) {
+        Schedule findSchedule = scheduleRepository.findScheduleByIdOrElseThrow(id);
+
+        findSchedule.setUpdateSchedule(title, contents);
+
+        //수정된 일정 저장하기
+        Schedule savedSchedule = scheduleRepository.save(findSchedule);
+        return new ScheduleResponseDto(savedSchedule.getId(), savedSchedule.getTitle(), savedSchedule.getContents());
+    }//updateSchedule
 }//end class
