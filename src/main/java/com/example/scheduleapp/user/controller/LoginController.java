@@ -38,6 +38,6 @@ public class LoginController {
 
         return new ResponseEntity<>(HttpStatus.OK);//성공하면 OK 반환
     }//login
-
+    
 
 }//end class

@@ -152,14 +152,11 @@
 - x
 
 #### Respons Eelements
-| 파라미터  |   타입    | 필수 여부 |           설명           |
-|:-----:|:-------:|:-----:|:----------------------:|
-| id | Integer |   Y   |         일정 ID          |
-|user_id | String  |   Y   |         사용자 ID         |
-|     name      | String  |   Y   |         사용자 이름         |
-| password | String  |   Y   |        일정 비밀번호         |
-| title | String  |   Y   |         일정 제목          |
-| contents | String  |   Y   |         일정 내용          |
+|    파라미터    |   타입    | 필수 여부 |           설명           |
+|:----------:|:-------:|:-----:|:----------------------:|
+|   title    | String  |   Y   |         일정 제목          |
+|  contents  | String  |   Y   |         일정 내용          |
+|  username  | String  |   Y   |         사용자 이름         |
 | created_at | String |   Y   |   일정 작성 일자(datetime)   |
 | updated_at |  String   |   Y   | 일정 최종 수정 일자 (datetime) |
 
@@ -167,14 +164,9 @@
 - Statue Code 200 OK [응답 성공]
 ```json
 {
-  "id" :"1",
-  "user_id" : "550e8400-e29b-41d4-a716-441155770000",
-  "name" : "작성자1",
-  "password" : "12345",
-  "title" : "오늘의 일정",
-  "contents" : "과제 제출하기",
-  "created_at" : "2024-10-30",
-  "updated_at" : "2024-10-31"
+  "title": "제목입니다.",
+  "contents": "내용입니다.",
+  "username": "유저이름"
 }
 ```
 - Statue Code 400 Bad Request [잘못된 요청]
@@ -191,7 +183,287 @@
 ```
 </details>
 
+<details>
+<summary>✅ 일정 수정</summary>
 
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+|  일정 수정   | PUT  |/schedules/{id}|
+
+#### Request Eelements
+| 파라미터  |   타입    | 필수 여부 |           설명           |
+|:-----:|:-------:|:-----:|:----------------------:|
+|   title    | String  |   Y   |         일정 제목          |
+|  contents  | String  |   Y   |         일정 내용          |
+
+
+#### Respons Eelements
+
+- x
+
+#### 요청 예시
+
+```json
+  {
+      "title" : "수정된 제목입니다.",
+      "contents" : "수정된 내용입니다."
+  }
+```
+
+#### 응답 예시
+- Statue Code 200 OK [응답 성공]
+```json
+{
+  "message": "일정 수정에 성공했습니다."
+}
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "일정 수정에 실패했습니다."
+  }
+```
+- Statue Code 401 Unauthorized [권한 없음]
+```json
+  {
+    "error": "일정 수정 권한이 없습니다."
+  }
+```
+</details>
+
+<details>
+<summary>✅ 일정 삭제</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+|  일정 삭제   | DELETE  |/schedules/{id}|
+
+#### Request Eelements
+- x
+
+
+#### Respons Eelements
+- x
+
+#### 요청 예시
+- x
+
+#### 응답 예시
+- Statue Code 200 OK [응답 성공]
+```json
+{
+  "message": "일정 삭제에 성공했습니다."
+}
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "일정 삭제에 실패했습니다."
+  }
+```
+- Statue Code 401 Unauthorized [권한 없음]
+```json
+  {
+    "error": "일정 삭제 권한이 없습니다."
+  }
+```
+</details>
+<br/>
+
+#### 👤 User
+|     기능     | method |        URL         |
+|:----------:|:------:|:------------------:|
+|   사용자 등록   | POST  |    /users          |
+| 사용자 정보 조회  | GET  |    /users/{Id}     |
+| 사용자 정보 수정  | PUT  |    /users/{Id}     |
+|   사용자 삭제   | DELETE  |    /users/{Id}     |
+
+<details>
+<summary>✅ 사용자 등록</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+|   사용자 등록   | POST  |        /users        |
+
+#### Request Eelements
+|    파라미터    |   타입    | 필수 여부 |           설명            |
+|:----------:|:-------:|:-----:|:-----------------------:|
+|  username  | String  |   Y   |         사용자 이름          |
+|   email    | String  |   Y   |         사용자 이메일         |
+|  password  | String  |   Y   |        사용자 비밀번호         |
+| created_at | String  |   Y   |    사용자 가입일(datetime)    |
+| updated_at | String  |   Y   | 사용자 정보 최종 수정일(datetime) |
+
+
+#### Respons Eelements
+| 파라미터  |   타입    | 필수 여부 |     설명 |
+|:-----:|:-------:|:-----:|:------:|
+|      id       | String  |   Y   |           사용자 ID            |
+|  username  | String  |   Y   |         사용자 이름          |
+|   email    | String  |   Y   |         사용자 이메일         |
+
+#### 요청 예시
+
+```json
+  {
+      "username" : "유저이름",
+      "password" : "12345",
+      "email" : "abcde@gmail.com"
+ }
+```
+#### 응답 예시
+- Statue Code 201 Created [생성 성공]
+```json
+  {
+      "id": 1,
+      "username": "유저이름",
+      "email": "abcde@gmail.com"
+  }
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "회원 등록에 실패했습니다."
+  }
+```
+</details>
+
+<details>
+<summary>✅ 사용자 정보 조회</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+| 사용자 정보 조회  | GET  |   /users/{id}   |
+
+#### Request Eelements
+|        파라미터        |   타입    | 필수 여부 |             설명              |
+|:------------------:|:-------:|:-----:|:---------------------------:|
+|      id       | String  |   Y   |           사용자 ID            |
+
+
+#### Respons Eelements
+| 파라미터  |   타입    | 필수 여부 |     설명 |
+|:-----:|:-------:|:-----:|:------:|
+|     username      | String  |   Y   |           사용자 이름            |
+|     email      | String  |   Y   |           사용자 이메일           |
+
+
+#### 요청 예시
+
+- x
+
+#### 응답 예시
+- Statue Code 200 OK [응답 성공]
+```json
+{
+  "username": "유저이름",
+  "email": "abcde@gmail.com"
+}
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "회원 조회에 실패했습니다."
+  }
+```
+- Statue Code 401 Unauthorized [권한 없음]
+```json
+  {
+    "error": "회원 조회 권한이 없습니다."
+  }
+```
+</details>
+
+<details>
+<summary>✅ 사용자 정보 수정</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+| 사용자 정보 수정  | PUT  | /users/{id} |
+
+#### Request Eelements
+|   파라미터   |   타입    | 필수 여부 |             설명              |
+|:--------:|:-------:|:-----:|:---------------------------:|
+| username | String  |   Y   |           사용자 이름            |
+|  password  | String  |   Y   |        사용자 비밀번호         |
+|  email   | String  |   Y   |           사용자 이메일           |
+
+
+#### Respons Eelements
+| 파라미터  |   타입    | 필수 여부 |     설명 |
+|:-----:|:-------:|:-----:|:------:|
+|     updated_at      | String  |   Y   | 사용자 정보 최종 수정일(datetime) |
+
+#### 요청 예시
+
+```json
+  {
+      "username" : "수정된 유저이름",
+      "password" : "123456",
+      "email" : "abcdefg@gmail.com"
+  }
+```
+#### 응답 예시
+- Statue Code 200 OK [생성 성공]
+```json
+  {
+  "message": "회원 정보를 수정했습니다.",
+  "updated_at": "2024-11-15"
+}
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "회원 정보를 수정에 실패했습니다."
+  }
+```
+- Statue Code 401 Unauthorized [권한 없음]
+```json
+  {
+    "error": "회원 정보를 수정할 수 있는 권한이 없습니다."
+  }
+```
+</details>
+
+<details>
+<summary>✅ 사용자 삭제</summary>
+
+|  기능  | method |URL|
+|:----:|:------:|:---:|
+| 사용자 삭제  | DELETE  | /users/{id} |
+
+#### Request Eelements
+- x
+
+
+
+#### Respons Eelements
+- x
+
+#### 요청 예시
+
+- x
+
+#### 응답 예시
+- Statue Code 200 OK [생성 성공]
+```json
+  {
+    "message" : "회원 삭제를 성공했습니다."
+  }
+```
+- Statue Code 400 Bad Request [잘못된 요청]
+```json
+  {
+    "error": "회원 삭제를 실패했습니다."
+  }
+```
+- Statue Code 401 Unauthorized [권한 없음]
+```json
+  {
+    "error": "회원 삭제 권한이 없습니다."
+  }
+```
+</details>
 
 
 </details>
