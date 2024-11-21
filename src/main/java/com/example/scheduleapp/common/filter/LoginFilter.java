@@ -46,7 +46,6 @@ public class LoginFilter implements Filter {
                 throw new ResponseStatusException(HttpStatus.UNAUTHORIZED ,"로그인을 해주세요.");
             }//if
 
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id = " + id);
             //로그인 성공한 경우
             log.info("로그인에 성공했습니다.");
         }//if
@@ -60,4 +59,5 @@ public class LoginFilter implements Filter {
             // request URI가 whiteListURL에 포함되는지 확인 -> 포함되면 true, 포함되지 않으면 false 반환
             return PatternMatchUtils.simpleMatch(WHITE_LIST, requestURI);
         }//isWhiteList
+
     }//end class

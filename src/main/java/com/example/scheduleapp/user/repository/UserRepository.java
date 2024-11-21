@@ -22,4 +22,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     default User findByEmailOrElseThrow(String email){
         return findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "이메일이 일치하지 않습니다."));
     }//findByEmailOrElseThrow
+
 }//end interface

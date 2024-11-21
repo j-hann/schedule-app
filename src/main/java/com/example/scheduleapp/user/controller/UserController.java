@@ -7,6 +7,7 @@ import com.example.scheduleapp.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,10 @@ public class UserController {
         return new ResponseEntity<>(memberResponseDto, HttpStatus.OK);
     }//findById
 
+    //사용자 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<UserResponseDto> deleteById(){
+        return null;
+    }//deleteById
 
 }//end class

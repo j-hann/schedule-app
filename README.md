@@ -50,17 +50,19 @@
 #### Request Eelements
 |    파라미터    |   타입    | 필수 여부 |           설명           |
 |:----------:|:-------:|:-----:|:----------------------:|
-|     id     | Integer |   Y   |         일정 ID          |
-|  user_id   | String  |   Y   |         사용자 ID         |
 |   title    | String  |   Y   |         일정 제목          |
 |  contents  | String  |   Y   |         일정 내용          |
-| created_at | String |   Y   |   일정 작성 일자(datetime)   |
-| updated_at |  String   |   Y   | 일정 최종 수정 일자 (datetime) |
+|  user_id   | String  |   Y   |         사용자 ID         |
 
 #### Respons Eelements
 | 파라미터  |   타입    | 필수 여부 |     설명 |
 |:-----:|:-------:|:-----:|:------:|
 | id | Integer |   Y   |         일정 ID          |
+|   title    | String  |   Y   |         일정 제목          |
+|  contents  | String  |   Y   |         일정 내용          |
+| created_at | String |   Y   |   일정 작성 일자(datetime)   |
+| updated_at |  String   |   Y   | 일정 최종 수정 일자 (datetime) |
+
 
 #### 요청 예시
 
@@ -291,8 +293,6 @@
 |  username  | String  |   Y   |         사용자 이름          |
 |   email    | String  |   Y   |         사용자 이메일         |
 |  password  | String  |   Y   |        사용자 비밀번호         |
-| created_at | String  |   Y   |    사용자 가입일(datetime)    |
-| updated_at | String  |   Y   | 사용자 정보 최종 수정일(datetime) |
 
 
 #### Respons Eelements
@@ -301,6 +301,8 @@
 |      id       | String  |   Y   |           사용자 ID            |
 |  username  | String  |   Y   |         사용자 이름          |
 |   email    | String  |   Y   |         사용자 이메일         |
+| created_at | String  |   Y   |    사용자 가입일(datetime)    |
+| updated_at | String  |   Y   | 사용자 정보 최종 수정일(datetime) |
 
 #### 요청 예시
 
