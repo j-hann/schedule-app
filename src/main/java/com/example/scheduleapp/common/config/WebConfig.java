@@ -1,5 +1,6 @@
 package com.example.scheduleapp.common.config;
 
+import com.example.scheduleapp.common.filter.ExceptionHandlerFilter;
 import com.example.scheduleapp.common.filter.LoginFilter;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -19,5 +20,15 @@ public class WebConfig {
 
         return filterRegistrationBean;
     }//loginFilter
+
+    // ExceptionHandlerFilter 등록
+    @Bean
+    public FilterRegistrationBean<ExceptionHandlerFilter> exceptionHandlerFilter() {
+        FilterRegistrationBean<ExceptionHandlerFilter> filterRegistrationBean = new FilterRegistrationBean<>();
+        filterRegistrationBean.setFilter(new ExceptionHandlerFilter());
+        filterRegistrationBean.setOrder(1);
+        filterRegistrationBean.addUrlPatterns("/*"); // 전체 URL에 적용
+        return filterRegistrationBean;
+    }
 
 }//end class
